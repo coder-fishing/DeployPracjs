@@ -1,5 +1,7 @@
 @use '../abstract/' as *;
 @use '../base/' as *;
+@use "sass:list";
+
 
 
 .product-table{
@@ -126,10 +128,10 @@
                     align-items: center;
                     gap: 0.5rem;
                     border-radius: 0.5rem;
-                    background-color: nth($colors, 1);
-        
+                    background-color: list.nth($colors, 1);
+            
                     &-text {
-                        color: nth($colors, 2);
+                        color: list.nth($colors, 2);
                     }
                 }
             }

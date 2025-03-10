@@ -1,30 +1,29 @@
-import  Layout  from "./../view/layout";
+import Layout from './../view/layout';
 
 export class Router {
     constructor(routes) {
-        // Define routes with path and controller (view function)
-        this.routes = routes     
+        this.routes = routes;
         this.contentDiv = document.getElementById('content');
         this.loadInitialRoute();
         window.addEventListener('popstate', () => this.loadRoute());
     }
- 
 
-    loadInitialRoute() {  
+    loadInitialRoute() {
         this.loadRoute(location.pathname);
-    } 
+    }
 
     navigate(path) {
         history.pushState({}, '', path);
-        this.loadRoute(path); 
+        this.loadRoute(path);
     }
+
     loadRoute(path = location.pathname) {
         const route = this.routes.find((r) => r.path === path);
         if (route) {
-          document.querySelector("#app").innerHTML = Layout();
-           new route.controller(new route.view());
+            document.querySelector("#app").innerHTML = Layout();
+            new route.controller(new route.view());
         } else {
-          document.getElementById("app").innerHTML = "<h2>404 Not Found</h2>";
+            document.getElementById("app").innerHTML = "<h2>404 Not Found</h2>";
         }
     }
-}  
+}
